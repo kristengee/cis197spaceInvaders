@@ -9,17 +9,17 @@
     <script src="/GameController.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
-      let socket = io();
-      let player;
-      socket.on('ready', () => {
+      var socket = io();
+      var player = void 0;
+      socket.on('ready', function () {
         document.getElementById('message').innerHTML = 'READY!';
         socket.emit('ready');
       });
-      socket.on('start', () => {
-        let g = new GameController(socket);
+      socket.on('start', function () {
+        var g = new GameController(socket);
         g.player = player;
       });
-      socket.on('player', num => {
+      socket.on('player', function (num) {
         player = num;
       });
     </script>
